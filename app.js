@@ -19,7 +19,7 @@ function rock(){
     picture.className = "animate__animated animate__bounceIn";
     bg.appendChild(picture);
     disableButtons();
-    setTimeout(botPlay, 2000); 
+    setTimeout(botPlay, 200); 
     playerCoice =("rock")
 }
 
@@ -32,7 +32,7 @@ function scissors(){
     picture.className = "animate__animated animate__bounceIn";
     bg.appendChild(picture);
     disableButtons();
-    setTimeout(botPlay, 2000); 
+    setTimeout(botPlay, 200); 
     playerCoice = ("scissors")
     
 }
@@ -45,7 +45,7 @@ function paper(){
     picture.className = "animate__animated animate__bounceIn";
     bg.appendChild(picture);
     disableButtons();
-    setTimeout(botPlay, 2000); 
+    setTimeout(botPlay, 200); 
     playerCoice = ("paper")
 }
 function botPlay(){
