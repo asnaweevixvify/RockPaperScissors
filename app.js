@@ -111,9 +111,9 @@ function gamePlay(){
     }
     
     if(j<5){
-      ++j
+      j++
     }
-    else if(j=5){
+    else if(j===5){
       setTimeout(result,200)
     }
      round.innerHTML=`
