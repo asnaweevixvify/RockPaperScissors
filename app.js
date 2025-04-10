@@ -1,14 +1,9 @@
 let playerCoice;
 let i = 0;
-let j = 0;
+let j = 1;
 let score = document.querySelector('.h1-3')
 let round = document.querySelector('.h1-4')
-score.innerHTML=`
-    คุณได้ ${i} คะแนน
-`
-round.innerHTML=`
-    ครั้งที่ ${j} 
-`
+
 function disableButtons() {
     document.getElementById('btn-rock').disabled = true;
     document.getElementById('btn-scissors').disabled = true;
@@ -22,26 +17,10 @@ function rock(){
     picture.src = "/pic/1.jpg";
     picture.id = "img";
     picture.className = "animate__animated animate__bounceIn";
-    Swal.fire({
-        title: "แน่ใจหรือไม่?",
-        text: "เมื่อเลือกแล้วจะไม่สามารถเปลี่ยนได้",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "แน่ใจ"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "เลือกสำเร็จ",
-            icon: "success"
-          });
-          bg.appendChild(picture);
-          disableButtons();
-        }
-      });
-      setTimeout(botPlay, 3000); 
-      playerCoice =("rock")
+    bg.appendChild(picture);
+    disableButtons();
+    setTimeout(botPlay, 2000); 
+    playerCoice =("rock")
 }
 
 function scissors(){
@@ -51,27 +30,10 @@ function scissors(){
     picture.src = "/pic/3.jpg";
     picture.id = "img";
     picture.className = "animate__animated animate__bounceIn";
-    
-    Swal.fire({
-        title: "แน่ใจหรือไม่?",
-        text: "เมื่อเลือกแล้วจะไม่สามารถเปลี่ยนได้",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "แน่ใจ"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "เลือกสำเร็จ",
-            icon: "success"
-          });
-          bg.appendChild(picture);
-          disableButtons();
-        }
-      });
-      setTimeout(botPlay, 3000); 
-      playerCoice = ("scissors")
+    bg.appendChild(picture);
+    disableButtons();
+    setTimeout(botPlay, 2000); 
+    playerCoice = ("scissors")
     
 }
 function paper(){
@@ -81,27 +43,10 @@ function paper(){
     picture.src = "/pic/2.jpg";
     picture.id = "img";
     picture.className = "animate__animated animate__bounceIn";
-    
-    Swal.fire({
-        title: "แน่ใจหรือไม่?",
-        text: "เมื่อเลือกแล้วจะไม่สามารถเปลี่ยนได้",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "แน่ใจ"
-      }).then((result) => {
-        if (result.isConfirmed) {
-          Swal.fire({
-            title: "เลือกสำเร็จ",
-            icon: "success"
-          });
-          bg.appendChild(picture);
-          disableButtons();
-        }
-      });
-      setTimeout(botPlay, 3000); 
-      playerCoice = ("paper")
+    bg.appendChild(picture);
+    disableButtons();
+    setTimeout(botPlay, 2000); 
+    playerCoice = ("paper")
 }
 function botPlay(){
     let randomNum = Math.floor(Math.random() * 3) + 1;
@@ -120,38 +65,106 @@ function botPlay(){
         botChoice = "scissors";
     }
 
-    setTimeout(gamePlay,1000);
-    returnGame();
-
-
+    setTimeout(gamePlay,500);
 }
 
 function gamePlay(){
     if (botChoice === "rock" && playerCoice === "rock") {
-        Swal.fire("เสมอ");
+        Swal.fire("เสมอ").then(() => {
+          returnGame(); 
+        });;
     } else if (botChoice === "paper" && playerCoice === "rock") {
-        Swal.fire("แพ้");
+        Swal.fire("แพ้").then(() => {
+          returnGame(); 
+        });;
     } else if (botChoice === "scissors" && playerCoice === "rock") {
-        Swal.fire("ชนะ");
+        Swal.fire("ชนะ").then(() => {
+          returnGame(); 
+        });;
+        i++
     } else if (botChoice === "rock" && playerCoice === "scissors") {
-        Swal.fire("ชนะ");
+        Swal.fire("แพ้").then(() => {
+          returnGame(); 
+        });;
     } else if (botChoice === "paper" && playerCoice === "scissors") {
-        Swal.fire("แพ้");
+        Swal.fire("ชนะ").then(() => {
+          returnGame(); 
+        });;
+        i++
     } else if (botChoice === "scissors" && playerCoice === "scissors") {
-        Swal.fire("เสมอ");
+        Swal.fire("เสมอ").then(() => {
+          returnGame(); 
+        });;
     } else if (botChoice === "rock" && playerCoice === "paper") {
-        Swal.fire("แพ้");
+        Swal.fire("ชนะ").then(() => {
+          returnGame(); 
+        });;
+        i++
     } else if (botChoice === "paper" && playerCoice === "paper") {
-        Swal.fire("เสมอ");
+        Swal.fire("เสมอ").then(() => {
+          returnGame(); 
+        });;
     } else if (botChoice === "scissors" && playerCoice === "paper") {
-        Swal.fire("ชนะ");
+        Swal.fire("แพ้").then(() => {
+          returnGame(); 
+        });;
     }
-
+    
+    if(j<5){
+      ++j
+    }
+    else if(j=5){
+      setTimeout(result,200)
+    }
+     round.innerHTML=`
+    ครั้งที่ ${j} 
+`
+    score.innerHTML=`
+    คุณได้ ${i} คะแนน
+`
+  
 }
 function returnGame(){
     document.getElementById('btn-rock').disabled = false;
     document.getElementById('btn-scissors').disabled = false;
     document.getElementById('btn-paper').disabled = false;
-
+    let bg2 = document.getElementById('side2');
+    let bg = document.getElementById('side1');
+    bg2.innerHTML = '';
+    bg.innerHTML = '';
 }
+function result(){
+  if(i>=3){
+    Swal.fire({
+      title: `คุณชนะแล้ว ได้คะแนนทั้งหมด ${i} คะแนน`,
+      icon: "success",
+      draggable: true,
+    }).then(() => {
+      resetGame(); 
+    });;
+  }
+  else{
+    Swal.fire({
+      title: `คุณแพ้แล้ว ได้คะแนนเพียง ${i} คะแนน`,
+      icon: "error",
+      draggable: true,
+    }).then(() => {
+      resetGame(); 
+    });;
+  }
+}
+function resetGame(){
+  let bg = document.getElementById('side1')
+  let bg2 = document.getElementById('side2')
 
+  i=0;
+  j=1;
+  score.innerHTML=`
+    คุณได้ ${i} คะแนน
+`
+  round.innerHTML=`
+    ครั้งที่ ${j} 
+`
+bg.innerHTML='';
+bg2.innerHTML='';
+}
