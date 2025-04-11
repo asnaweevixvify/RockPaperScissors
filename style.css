@@ -50,6 +50,26 @@ body{
     font-size: 30px;
     text-align: center;
 }
+.h1-5{
+    font-family: 'Kanit';
+    font-weight: 400;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    font-size: 30px;
+    position: absolute;
+    left: 550px;
+    top:250px
+}
+.h1-6{
+    font-family: 'Kanit';
+    font-weight: 400;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    font-size: 30px;
+    position: absolute;
+    left: 550px;
+    top:520px
+}
 .menu{
     display: flex;
     margin-top: 30px;
@@ -75,11 +95,13 @@ body{
 #img2{
     width: 100px;
     height: 150px;
-    display: flex;
+    display:block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
+    transform: scaleY(-1);
 }
+
 .side2{
     width: 400px;
     height: 200px;
