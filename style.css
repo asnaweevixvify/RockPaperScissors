@@ -11,7 +11,7 @@ body{
     font-weight: 400;
     color: white;
     text-shadow: 2px 2px 2px black;
-    font-size: 40px;
+    font-size: 45px;
     text-align: center;
     margin-top: 30px;
     display: flex;
@@ -25,7 +25,7 @@ body{
     font-weight: 400;
     color: white;
     text-shadow: 2px 2px 2px black;
-    font-size: 30px;
+    font-size: 20px;
     text-align: center;
     margin-top: 10px;
     display: flex;
@@ -57,7 +57,7 @@ body{
     text-shadow: 2px 2px 2px black;
     font-size: 30px;
     position: absolute;
-    left: 550px;
+    left: 450px;
     top:250px
 }
 .h1-6{
@@ -67,8 +67,13 @@ body{
     text-shadow: 2px 2px 2px black;
     font-size: 30px;
     position: absolute;
-    left: 550px;
+    left: 450px;
     top:520px
+}
+.h1-7{
+    font-family: 'Kanit';
+    font-weight: 400;
+    font-size: 30px;
 }
 .menu{
     display: flex;

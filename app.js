@@ -70,72 +70,90 @@ function botPlay(){
 }
 
 function gamePlay(){
+  let botScore = document.getElementById('h1-5')
+  let playerScore = document.getElementById('h1-6')
+
     if (botChoice === "rock" && playerCoice === "rock") {
       setTimeout(() => {
         Swal.fire("เสมอ").then(() => {
+          detectRound()
           returnGame(); 
         })},300)
     } else if (botChoice === "paper" && playerCoice === "rock") {
       setTimeout(() => {
         Swal.fire("แพ้").then(() => {
+          detectRound()
           returnGame(); 
         })},300);;
         k++
     } else if (botChoice === "scissors" && playerCoice === "rock") {
       setTimeout(() => {
         Swal.fire("ชนะ").then(() => {
+          detectRound()
           returnGame(); 
         })},300);;
         i++
     } else if (botChoice === "rock" && playerCoice === "scissors") {
       setTimeout(() => {
         Swal.fire("แพ้").then(() => {
+          detectRound()
           returnGame(); 
         })},300);;
         k++
     } else if (botChoice === "paper" && playerCoice === "scissors") {
       setTimeout(() => {  
       Swal.fire("ชนะ").then(() => {
+          detectRound()
           returnGame(); 
         })},300);;
         i++
     } else if (botChoice === "scissors" && playerCoice === "scissors") {
       setTimeout(() => {
         Swal.fire("เสมอ").then(() => {
+          detectRound()
           returnGame(); 
         })},300);;
     } else if (botChoice === "rock" && playerCoice === "paper") {
       setTimeout(() => {
         Swal.fire("ชนะ").then(() => {
+          detectRound()
           returnGame(); 
         })},300);;
         i++
     } else if (botChoice === "paper" && playerCoice === "paper") {
       setTimeout(() => {
         Swal.fire("เสมอ").then(() => {
+          detectRound()
           returnGame(); 
         })},300);;
     } else if (botChoice === "scissors" && playerCoice === "paper") {
       setTimeout(() => {
         Swal.fire("แพ้").then(() => {
-          returnGame(); 
+          detectRound()
+          returnGame();
         })},300);;
         k++
     }
-    
-    if(j<5){
-      j++
-    }
-    else if(j===5){
-      setTimeout(result,400)
-    }
-     round.innerHTML=`
-    ครั้งที่ ${j} 
-`
     score.innerHTML=`
     คุณได้ ${i} คะแนน
 `
+    botScore.innerHTML=`
+    ฝั่งของบอท ${k} คะแนน `
+    playerScore.innerHTML=`
+    ฝั่งของคุณ ${i} คะแนน
+    `
   
+}
+function detectRound(){
+    if(j<5){
+      j++
+      round.innerHTML=`
+    ครั้งที่ ${j} 
+`
+    }
+    else if(j===5){
+      setTimeout(result,200);
+    }
 }
 function returnGame(){
     document.getElementById('btn-rock').disabled = false;
@@ -149,21 +167,32 @@ function returnGame(){
 function result(){
   if(i>k){
     Swal.fire({
-      title: `คุณชนะแล้ว 
-      ได้คะแนนทั้งหมด ${i} คะแนน
-      บอทได้ ${k} คะแนน`,
+      title: `<h1 class="h1-7"> คุณชนะแล้ว 
+      คุณได้คะแนน ${i} คะแนน
+      บอทได้ ${k} คะแนน </h1>`,
       icon: "success",
       draggable: true,
     }).then(() => {
       resetGame(); 
     });;
   }
-  else{
+  else if(i<k){
     Swal.fire({
-      title: `คุณแพ้แล้ว 
-      ได้คะแนนเพียง ${i} คะแนน
-      บอทได้ ${k} คะแนน`,
+      title: `<h1 class="h1-7"> คุณแพ้แล้ว 
+      คุณได้คะแนน ${i} คะแนน
+      บอทได้ ${k} คะแนน </h1>`,
       icon: "error",
+      draggable: true,
+    }).then(() => {
+      resetGame(); 
+    });;
+  }
+  else if (i===k){
+    Swal.fire({
+      title: `<h1 class="h1-7"> คุณเสมอกับบอท 
+      คุณได้คะแนน ${i} คะแนน
+      บอทได้ ${k} คะแนน </h1>`,
+      icon: "warning",
       draggable: true,
     }).then(() => {
       resetGame(); 
@@ -173,14 +202,22 @@ function result(){
 function resetGame(){
   let bg = document.getElementById('side1')
   let bg2 = document.getElementById('side2')
+  let botScore = document.getElementById('h1-5')
+  let playerScore = document.getElementById('h1-6')
 
   i=0;
   j=1;
+  k=0;
   score.innerHTML=`
     คุณได้ ${i} คะแนน
 `
   round.innerHTML=`
     ครั้งที่ ${j} 
+`
+  botScore.innerHTML=`
+  ฝั่งของบอท ${k} คะแนน `
+  playerScore.innerHTML=`
+  ฝั่งของคุณ ${i} คะแนน
 `
 bg.innerHTML='';
 bg2.innerHTML='';
