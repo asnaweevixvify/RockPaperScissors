@@ -143,3 +143,30 @@ body{
     border: 2px solid black;
     border-radius: 10px;
 }
+@media(max-width:450px){
+    .h1-1{
+        margin-left: 150px;
+    }
+    .side2{
+        margin-left: 150px;
+    }
+    .side1{
+        margin-left: 150px;
+    }
+    .allbutton{
+        margin-left: 290px;
+    }
+    .menu{
+        margin-left: 50px;
+    }
+    .h1-5{
+        font-size: 20px;
+        width: 100px;
+        left: 25px;
+    }
+    .h1-6{
+        font-size: 20px;
+        width: 100px;
+        left: 25px;
+    }
+}
